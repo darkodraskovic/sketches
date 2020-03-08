@@ -1,0 +1,9 @@
+- use all shapes: ELLIPSE, RECT, ARC, TRIANGLE, QUAD
+	- see https://processing.org/reference/createShape_.html
+- use shape compositions as patterns
+	- include LINE
+	- use diff shape dirs like hor, ver, diag
+	- use parallel and orthogonal shape distros
+- partition canvas according to some principle and put patterns of shape (patterns) in partitions
+	- use BSP
+	- use trig or quadratic func to gen inc/dec hor/ver area strips

@@ -49,9 +49,9 @@ public class Sketch09 extends PApplet {
 				float ll = lineLen * noise * lineScl;
 				float gl = gapLen * noise * gapScl;
 
-				PShape line = createShape(LINE, 0, 0, ll, 0);
+				PShape line = createShape(LINE, gl * random(1) - gl / 2, 0, ll, 0);
 				Shape shape = new Shape(this, line);
-				shape.position.y = i * verDist;
+				shape.position.y = i * verDist + verDist / 2;
 				shape.position.x = lineStart;
 				shape.strokeColor = colors.get("red");
 				shape.strokeWeight = 1 + weightScl * noise;
@@ -79,7 +79,7 @@ public class Sketch09 extends PApplet {
 			break;
 		case 's':
 			gapScl -= sclIncr;
-			break;	
+			break;
 		case 'e':
 			weightScl += sclIncr;
 			break;
@@ -91,14 +91,13 @@ public class Sketch09 extends PApplet {
 			break;
 		case 'f':
 			distScl++;
-			break;			
+			break;
 		default:
 			break;
 		}
 
 		createShapes();
 	}
-	
 
 	@Override
 	public void draw() {

@@ -7,5 +7,9 @@
 			<attribute name="javadoc_location" value="file:/home/darko/Programs/processing-javadocs/core/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/home/darko/Programs/Processing/core/library/gluegen-rt.jar"/>
+	<classpathentry kind="lib" path="/home/darko/Programs/Processing/core/library/gluegen-rt-natives-linux-amd64.jar"/>
+	<classpathentry kind="lib" path="/home/darko/Programs/Processing/core/library/jogl-all.jar"/>
+	<classpathentry kind="lib" path="/home/darko/Programs/Processing/core/library/jogl-all-natives-linux-amd64.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
