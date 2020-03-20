@@ -2,14 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/home/darko/Programs/Processing/core/library/core.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="file:/home/darko/Programs/processing-javadocs/core/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="/home/darko/Programs/Processing/core/library/gluegen-rt.jar"/>
-	<classpathentry kind="lib" path="/home/darko/Programs/Processing/core/library/gluegen-rt-natives-linux-amd64.jar"/>
-	<classpathentry kind="lib" path="/home/darko/Programs/Processing/core/library/jogl-all.jar"/>
-	<classpathentry kind="lib" path="/home/darko/Programs/Processing/core/library/jogl-all-natives-linux-amd64.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/processing"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

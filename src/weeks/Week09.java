@@ -1,14 +1,14 @@
-package week09.sketch;
+package weeks;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import lib.Shape;
 import processing.core.PApplet;
 import processing.core.PShape;
-import week09.lib.Shape;
 
-public class Sketch09 extends PApplet {
+public class Week09 extends PApplet {
 
 	ArrayList<Shape> shapes = new ArrayList<Shape>();
 	HashMap<String, Integer> colors = new HashMap<String, Integer>();
@@ -111,7 +111,7 @@ public class Sketch09 extends PApplet {
 
 	public static void main(String[] args) {
 		String[] processingArgs = { "Sketch" };
-		Sketch09 main = new Sketch09();
+		Week09 main = new Week09();
 		PApplet.runSketch(processingArgs, main);
 	}
 }
