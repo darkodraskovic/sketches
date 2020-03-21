@@ -4,22 +4,17 @@ import processing.core.PApplet;
 import processing.core.PShape;
 
 public class Shape extends Entity {
+	public PShape shape;
+
 	public Shape(PApplet pApplet, PShape shape) {
-		this.pApplet = pApplet;
+		super(pApplet);
 		this.shape = shape;
-		this.shape.setStrokeCap(PApplet.SQUARE);
 	}
 
 	@Override
 	public void draw() {
 		super.draw();
-		shape.resetMatrix();
-		shape.translate(position.x, position.y);
-		shape.translate(offset.x, offset.y);
-		shape.rotate(rotation);
-		shape.translate(-offset.x, -offset.y);
-		shape.scale(scale.x, scale.y);
-
+		
 		pApplet.shape(shape, 0, 0);
 	}
 
@@ -39,5 +34,14 @@ public class Shape extends Entity {
 		} else {
 			shape.noFill();
 		}
+	}
+
+	protected void updateTransform() {
+		shape.resetMatrix();
+		shape.translate(position.x, position.y);
+		shape.translate(offset.x, offset.y);
+		shape.rotate(rotation);
+		shape.translate(-offset.x, -offset.y);
+		shape.scale(scale.x, scale.y);
 	}
 }

@@ -1,12 +1,14 @@
 # Generative Art Weekly
 
-This Eclipse based project uses Processing java libraries to
+This Eclipse based project uses **Processing** java libraries to
 
   * create (idealy) a weekly Processing generative art sketch.
-  * save, via sketches, various generative art ideas to be used as starting
-    points for more elaborated sketches
+  * store, *via* sketches, various generative art ideas to be used as
+    starting points for more elaborated sketches
   * set up experiments in procedural generation.
     
+The generative art and procedural generation works are mostly in 2D.
+
 ## Installation
 
 To add Processing to your class path, follow the instructions
