@@ -5,7 +5,6 @@ import processing.core.PApplet;
 abstract public class Graphics extends Entity {
 	public Graphics(PApplet pApplet) {
 		super(pApplet);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -36,9 +35,10 @@ abstract public class Graphics extends Entity {
 	protected void updateTransform() {
 		pApplet.pushMatrix();
 		pApplet.translate(position.x, position.y);
-		pApplet.translate(offset.x, offset.y);
+		pApplet.translate(pivot.x, pivot.y);
 		pApplet.rotate(rotation);
-		pApplet.translate(-offset.x, -offset.y);
+		pApplet.translate(-pivot.x, -pivot.y);
 		pApplet.scale(scale.x, scale.y);
+		pApplet.translate(offset.x, offset.y);
 	}
 }

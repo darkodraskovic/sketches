@@ -11,6 +11,7 @@ public abstract class Entity {
 
 	// transform
 	public PVector position = new PVector(0, 0);
+	public PVector pivot = new PVector(0, 0);
 	public PVector offset = new PVector(0, 0);
 	public PVector scale = new PVector(1, 1);
 	public float rotation;
@@ -23,7 +24,7 @@ public abstract class Entity {
 	public float strokeWeight = 1;
 	public boolean useFill = true;
 	public int fillColor = 0xFFFFFFFF;
-
+	
 	public Entity(PApplet pApplet) {
 		this.pApplet = pApplet;
 

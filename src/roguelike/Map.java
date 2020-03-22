@@ -10,11 +10,37 @@ import processing.core.PShape;
 public class Map {
 	protected PApplet pApplet;
 
-	private ArrayList<Cell> cells = new ArrayList<Cell>();
-	private int width = 32;
-	private int height = 24;
-	protected int cellWidth = 16;
-	protected int cellHeight = 16;
+	protected ArrayList<Cell> cells;
+
+	protected int width;
+	protected int height;
+	protected int cellWidth;
+	protected int cellHeight;
+
+	// CONSTRUCTOR
+	public Map(PApplet pApplet) {
+		this.pApplet = pApplet;
+
+		setDimensions(32, 24, 16, 16);
+		createBaseMap();
+	}
+
+	public Map(PApplet pApplet, int width, int height, int cellWidth, int cellHeight) {
+		this.pApplet = pApplet;
+
+		setDimensions(width, height, cellWidth, cellHeight);
+		createBaseMap();
+	}
+
+	// DIMENSIONS
+	private void setDimensions(int width, int height, int cellWidth, int cellHeight) {
+		this.width = width;
+		this.height = height;
+		this.cellWidth = cellWidth;
+		this.cellHeight = cellHeight;
+
+		cells = new ArrayList<Cell>(width * height);
+	}
 
 	public int getCellWidth() {
 		return cellWidth;
@@ -23,30 +49,12 @@ public class Map {
 	public int getCellHeight() {
 		return cellHeight;
 	}
-
-	public Map(PApplet pApplet) {
-		this.pApplet = pApplet;
-
-		this.createBaseMap();
-	}
-
-	public Map(PApplet pApplet, int width, int height, int cellWidth, int cellHeight) {
-		this.pApplet = pApplet;
-
-		this.width = width;
-		this.height = height;
-		this.cellWidth = cellWidth;
-		this.cellHeight = cellHeight;
-
-		this.createBaseMap();
-	}
-
+	
+	// BASE MAP
 	private void createBaseMap() {
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
-				Entity entity = createBaseCellEntity();
-				Cell cell = new Cell(this, entity, x, y);
-				cells.add(cell);
+				new Cell(this, createBaseCellEntity(), x, y);
 			}
 		}
 	}
@@ -56,24 +64,23 @@ public class Map {
 		return new Shape(this.pApplet, rect);
 	}
 
+	// CELL
 	public Cell getCell(int x, int y) {
-		return cells.get(getIndex(x, y));
+		x = Utils.clamp(x, 0, width - 1);
+		y = Utils.clamp(y, 0, height - 1);
+		return cells.get(y * this.width + x);
 	}
 
-	public void setCell(Cell cell, int x, int y) {
-		cell.setPosition(x, y);
-		cells.set(getIndex(x, y), cell);
+	protected void setCell(Cell cell, int x, int y) {
+		// if map is created
+		if (cells.size() < width * height) {
+			cells.add(cell);
+			return;
+		}
+		cells.set(y * this.width + x, cell);
 	}
 
-	public void setCell(Entity entity, int x, int y) {
-		Cell cell = new Cell(this, entity, x, y);
-		cells.set(getIndex(x, y), cell);
-	}
-
-	private int getIndex(int x, int y) {
-		return y * this.width + x;
-	}
-
+	// DRAW
 	public void draw() {
 		for (Cell cell : cells) {
 			cell.draw();

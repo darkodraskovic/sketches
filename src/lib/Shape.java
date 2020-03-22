@@ -5,6 +5,7 @@ import processing.core.PShape;
 
 public class Shape extends Entity {
 	public PShape shape;
+	public int mode = PApplet.CORNER;
 
 	public Shape(PApplet pApplet, PShape shape) {
 		super(pApplet);
@@ -14,7 +15,8 @@ public class Shape extends Entity {
 	@Override
 	public void draw() {
 		super.draw();
-		
+
+		pApplet.shapeMode(mode);
 		pApplet.shape(shape, 0, 0);
 	}
 
@@ -39,9 +41,10 @@ public class Shape extends Entity {
 	protected void updateTransform() {
 		shape.resetMatrix();
 		shape.translate(position.x, position.y);
-		shape.translate(offset.x, offset.y);
+		shape.translate(pivot.x, pivot.y);
 		shape.rotate(rotation);
-		shape.translate(-offset.x, -offset.y);
+		shape.translate(-pivot.x, -pivot.y);
 		shape.scale(scale.x, scale.y);
+		shape.translate(offset.x, offset.y);
 	}
 }
