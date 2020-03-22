@@ -3,13 +3,21 @@ package weeks;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.joml.Vector2i;
+
+import discrete.shape.Stroke;
 import lib.Entity;
 import lib.Graphics;
+import lib.Shape;
 import processing.core.PApplet;
+import processing.core.PShape;
+import roguelike.Map;
 
 public class Week10 extends PApplet {
 
 	ArrayList<Entity> entities = new ArrayList<Entity>();
+
+	Map map;
 
 	public void settings() {
 		size(600, 600);
@@ -17,8 +25,14 @@ public class Week10 extends PApplet {
 
 	@Override
 	public void setup() {
-		Graphics gfx = new RectSequence(this);
-		entities.add(gfx);
+		map = new Map(this);
+		ArrayList<Vector2i> line = Stroke.bresenhamLine(1, 1, 10, 3);
+		for (Vector2i l : line) {
+			PShape rectShape = createShape(PApplet.RECT, 0, 0, map.getCellWidth(), map.getCellHeight());
+			Entity entity = new Shape(this, rectShape);
+			entity.fillColor = color(255, 0, 0);
+			map.setCell(entity, l.x, l.y);
+		}
 	}
 
 	@Override
@@ -33,6 +47,7 @@ public class Week10 extends PApplet {
 			Entity entity = iterator.next();
 			entity.draw();
 		}
+		map.draw();
 	}
 
 	public static void main(String[] args) {
@@ -40,21 +55,4 @@ public class Week10 extends PApplet {
 		Week10 main = new Week10();
 		PApplet.runSketch(processingArgs, main);
 	}
-	
-	public class RectSequence extends Graphics {
-		public RectSequence(PApplet pApplet) {
-			super(pApplet);
-			// TODO Auto-generated constructor stub
-		}
-
-		@Override
-		protected void shape() {
-			for (int i = 0; i < 10; i++) {
-				pApplet.rect(i*32, 32, 32, 32);
-			}
-
-		}
-	}
 }
-
-
